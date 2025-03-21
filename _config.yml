@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: ChoongGhee
 subtitle: ''
 description: ''
 keywords:
 author: ChoongGhee
-language: en
+language: [en, ko]
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://choongghee.github.io
-permalink: :year:month:day-:title/
+permalink: :lang/:year:month:day/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -31,7 +31,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :lang/:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -105,3 +105,11 @@ deploy:
   repo: https://github.com/ChoongGhee/choongghee.github.io.git
   branch: main  # 또는 master (GitHub 기본 브랜치명에 따라 다름)
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+
+
+# hexo-generator-i18n Plug-In
+i18n:
+  type: [prefix]
+  generators: [index, archive, category, tag]
+
+encoding: UTF-8
