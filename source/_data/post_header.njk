@@ -1,0 +1,31 @@
+{% if page.categories and page.categories.length %}
+  {% set current_category = page.categories.toArray()[0] %}
+  {% set category_posts = site.categories.findOne({name: current_category.name}).posts.sort('-date').toArray() %}
+
+  <div class="category-posts-list">
+    <div class="category-header">
+      <span class="category-name">{{ current_category.name }}</span>
+      <span class="posts-count">{{ category_posts.length }}개의 글</span>
+      <a href="{{ url_for(current_category.path) }}" class="view-all">목록보기</a>
+    </div>
+    
+    <table class="posts-table">
+      <thead>
+        <tr>
+          <th class="post-title">글 제목</th>
+          <th class="post-date">작성일</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in category_posts %}
+          <tr {% if post.path === page.path %}class="current-post"{% endif %}>
+            <td class="post-title">
+              <a href="{{ url_for(post.path) }}">{{ post.title }}</a>
+            </td>
+            <td class="post-date">{{ date(post.date, 'YYYY. M. DD.') }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endif %}

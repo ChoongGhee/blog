@@ -1,0 +1,108 @@
+// 관련 글 섹션 스타일링
+.popular-posts-header {
+  font-size: 1.3em;
+  margin: 30px 0 15px;
+  border-left: 4px solid #6c9;
+  padding-left: 15px;
+}
+
+.popular-posts {
+  margin-bottom: 30px;
+  
+  .popular-posts-item {
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    
+    a {
+      color: #555;
+      transition: color 0.2s;
+      
+      &:hover {
+        color: #6c9;
+      }
+    }
+    
+    .popular-posts-date {
+      font-size: 0.85em;
+      color: #999;
+      margin-left: 10px;
+    }
+  }
+}
+
+// 카테고리 포스트 목록 스타일
+.category-posts-list {
+  margin-bottom: 30px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.category-header {
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  align-items: center;
+}
+
+.category-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.posts-count {
+  color: #6c757d;
+  font-size: 0.9em;
+  flex-grow: 1;
+}
+
+.view-all {
+  font-size: 0.85em;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.posts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.posts-table th {
+  background-color: #f8f9fa;
+  padding: 8px 16px;
+  text-align: left;
+  font-weight: normal;
+  color: #6c757d;
+  font-size: 0.9em;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.posts-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.posts-table tr:last-child td {
+  border-bottom: none;
+}
+
+.post-title {
+  width: 70%;
+}
+
+.post-date {
+  width: 30%;
+  color: #6c757d;
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.current-post {
+  background-color: #f8f9fa;
+}
+
+.current-post .post-title a {
+  color: #007bff;
+  font-weight: bold;
+}

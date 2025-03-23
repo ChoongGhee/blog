@@ -98,7 +98,7 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: next
 
-# Deployment
+# Deployment 배포는 여기에 작업은 다른 Private작업에 
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
@@ -113,3 +113,14 @@ i18n:
   generators: [index, archive, category, tag]
 
 encoding: UTF-8
+
+# 해당 글에서 보이는 목록 기능능
+related_posts:
+  enabled: true
+  filter_threshold: 0.1
+  related_count: 5
+  weight:
+    title: 50
+    categories: 25
+    tags: 25
+  title: "이 글과 관련된 글"
