@@ -2,8 +2,8 @@
 title: Tree
 lang: en
 date: '2025-04-10T16:55:36.879Z'
+excerpt: tree
 ---
-### Tree
 # Overview
 - a type of [graph](/en/graph)
 - [Data structure](/en/Data-structure)
