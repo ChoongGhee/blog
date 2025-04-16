@@ -8,14 +8,18 @@ subtitle: ''
 description: ''
 keywords:
 author: ChoongGhee
-language: ko
+# 이 부분을 수정하세요 - 언어를 배열로 변경
+language: 
+  - ko
+  - en
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://choongghee.github.io
-permalink: :lang/:year:month:day/:title/
+permalink: :year:month:day/:title/
 permalink_defaults:
+  lang: ko  # 기본 언어 경로
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
@@ -27,6 +31,7 @@ tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
+# 이 부분을 추가하세요 - 다국어 디렉토리 설정
 i18n_dir: :lang
 skip_render:
 
@@ -63,8 +68,8 @@ index_generator:
   path: ''
   per_page: 10
   order_by: -date
-  lang: true
-  include_all_languages: false  # 중요: 모든 언어 포함 안 함
+  # 다양한 언어를 지원하도록 하는 기능 hexo-generator-index-i18n --save << 플러그인 활용
+  single_language_index: true
 
 # Category & Tag
 default_category: uncategorized
@@ -105,23 +110,21 @@ theme: next
 deploy:
   type: git
   repo: https://github.com/ChoongGhee/choongghee.github.io.git
-  branch: main  # 또는 master (GitHub 기본 브랜치명에 따라 다름)
+  branch: main
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
 
-
+# 이 부분을 제거하거나 주석 처리하세요 - Hexo 기본 다국어와 충돌
 # hexo-generator-i18n Plug-In
-i18n:
-  type: [prefix]
-  generators: [index, archive, category, tag]
-  languages:
-    - code: ko
-      name: 한국어
-    - code: en
-      name: English
+# i18n:
+#   type: [prefix]
+#   generators: [index, archive, category, tag]
+#   languages:
+#     - ko    
+#     - en
 
 encoding: UTF-8
 
-# 해당 글에서 보이는 목록 기능능
+# 해당 글에서 보이는 목록 기능
 related_posts:
   enabled: true
   filter_threshold: 0.1
