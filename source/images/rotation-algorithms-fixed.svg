@@ -1,0 +1,517 @@
+<svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 및 타이틀 -->
+  <rect width="1000" height="900" fill="#f9f9f9"/>
+  <text x="500" y="40" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" font-weight="bold">C++ std::rotate 알고리즘 비교</text>
+  
+  <!-- 왼쪽 타이틀 -->
+  <text x="250" y="80" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="bold">삼중 역전법 (Triple Reverse)</text>
+  <text x="250" y="105" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">임의 접근 반복자 (Random Access Iterator)</text>
+  
+  <!-- 오른쪽 타이틀 -->
+  <text x="750" y="80" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="bold">순환 교체법 (Cycle Rotation)</text>
+  <text x="750" y="105" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">전방향 반복자 (Forward Iterator)</text>
+  
+  <!-- 중앙 분리선 -->
+  <line x1="500" y1="70" x2="500" y2="830" stroke="#ccc" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- 삼중 역전법 초기 배열 -->
+  <g transform="translate(100, 150)">
+    <text x="150" y="-20" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">초기 배열</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    
+    <!-- middle 표시 -->
+    <line x1="150" y1="-5" x2="150" y2="45" stroke="#ff6666" stroke-width="2"/>
+    <text x="150" y="-8" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff6666">middle</text>
+  </g>
+  
+  <!-- 삼중 역전법 단계 1 -->
+  <g transform="translate(100, 230)">
+    <text x="120" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 1: 첫 번째 부분 뒤집기</text>
+    <text x="280" y="-8" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">reverse(first, middle)</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+  </g>
+  
+  <!-- 삼중 역전법 단계 2 -->
+  <g transform="translate(100, 310)">
+    <text x="120" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 2: 두 번째 부분 뒤집기</text>
+    <text x="280" y="-8" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">reverse(middle, last)</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ccffcc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ccffcc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ccffcc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ccffcc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+  </g>
+  
+  <!-- 삼중 역전법 단계 3 -->
+  <g transform="translate(100, 390)">
+    <text x="120" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 3: 전체 배열 뒤집기</text>
+    <text x="280" y="-8" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">reverse(first, last)</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e6f7ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f7ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f7ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f7ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f7ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f7ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f7ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+  </g>
+  
+  <!-- 삼중 역전법 최종 결과 -->
+  <g transform="translate(100, 470)">
+    <text x="150" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">최종 결과</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+  </g>
+  
+  <!-- 순환 교체법 초기 배열 -->
+  <g transform="translate(600, 150)">
+    <text x="150" y="-20" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">초기 배열</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    
+    <!-- middle 표시 -->
+    <line x1="150" y1="-5" x2="150" y2="45" stroke="#ff6666" stroke-width="2"/>
+    <text x="150" y="-8" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff6666">middle</text>
+  </g>
+  
+  <!-- 순환 교체법 단계 1 -->
+  <g transform="translate(600, 230)">
+    <text x="120" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 1: A와 D 교환</text>
+    <text x="280" y="-8" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">swap(*first, *middle)</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+  </g>
+  
+  <!-- 순환 교체법 단계 2 -->
+  <g transform="translate(600, 310)">
+    <text x="150" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 2: B와 E 교환</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+  </g>
+  
+  <!-- 순환 교체법 단계 3 -->
+  <g transform="translate(600, 390)">
+    <text x="150" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 3: C와 F 교환</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+  </g>
+  
+  <!-- 순환 교체법 단계 4 -->
+  <g transform="translate(600, 470)">
+    <text x="150" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">단계 4(1사이클 결과): A와 G 교환</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+  </g>
+  
+   <!-- 순환 교체법 단계 5 -->
+  <g transform="translate(600, 550)">
+    <text x="120" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 5: B와 A 교환</text>
+    <text x="280" y="-20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">두 번째 사이클 시작</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e6f2ff" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    
+    <!-- middle 표시 -->
+    <line x1="300" y1="-5" x2="300" y2="45" stroke="#ff6666" stroke-width="2"/>
+    <text x="300" y="-8" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff6666">middle</text>
+
+  </g>
+  
+  <!-- 순환 교체법 단계 6 -->
+  <g transform="translate(600, 630)">
+    <text x="120" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">단계 6: C와 B 교환</text>
+    <text x="280" y="-20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#666">세 번째 사이클 시작 </text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#ffcccc" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+
+    <!-- middle 표시 -->
+    <line x1="300" y1="-5" x2="300" y2="45" stroke="#ff6666" stroke-width="2"/>
+    <text x="300" y="-8" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff6666">middle</text>
+  </g>
+  
+  <!-- 순환 교체법 최종 결과 -->
+  <g transform="translate(600, 710)">
+    <text x="150" y="-8" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" font-weight="bold">최종 결과</text>
+    
+    <!-- 각 요소 -->
+    <g>
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">D</text>
+    </g>
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">E</text>
+    </g>
+    <g transform="translate(100, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">F</text>
+    </g>
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">G</text>
+    </g>
+    <g transform="translate(200, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">A</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">B</text>
+    </g>
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="40" height="40" fill="#e0ffe0" stroke="#333"/>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">C</text>
+    </g>
+  </g>
+  
+  <!-- 알고리즘 설명 텍스트 -->
+  <g transform="translate(70, 580)">
+    <rect x="0" y="0" width="400" height="80" fill="#f0f0f0" stroke="#666" rx="5" ry="5"/>
+    <text x="200" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+      삼중 역전법(Triple Reverse):
+    </text>
+    <text x="200" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+      3번의 revers작업으로 회전을 구현함. 임의 접근 반복자에 최적화
+    </text>
+  </g>
+  
+  <g transform="translate(570, 790)">
+    <rect x="0" y="0" width="400" height="80" fill="#f0f0f0" stroke="#666" rx="5" ry="5"/>
+    <text x="200" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+      순환 교체법(Cycle Rotation):
+    </text>
+    <text x="200" y="55" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+     사이클별 순환 교체 방식(재귀). 전방향 반복자에서 작동 가능
+    </text>
+  </g>
+  
+</svg>
+    
