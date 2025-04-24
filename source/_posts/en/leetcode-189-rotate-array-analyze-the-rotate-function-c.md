@@ -1,15 +1,16 @@
 ---
-title: Leetcode 189. Rotate Array - Analyze the Rotate Function (C++)
+title: Analyze the Rotate Function (C++) - Leetcode 189. Rotate Array
 lang: en
 date: '2025-04-17T16:49:06.547Z'
 excerpt : A breakdown of the rotate() function, which pushes an array in-place by k.
 categories: 
+    - C/C++
     - LeetCode
-    - std container
 tag:
-    - c++
+    - C/C++
     - std container
     - Algorithm
+mathjax: true
 ---
 # Summary
 > Rationale: Solved a problem implementing rotate(). while solving the problem, I realized that.
