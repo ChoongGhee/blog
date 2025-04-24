@@ -1,15 +1,16 @@
 ---
-title: LeetCode 189. Rotate Array - rotate 함수 분석 (C++)
+title: rotate 함수 분석 (C++) - LeetCode 189. Rotate Array
 lang: ko
 date: '2025-04-17T16:49:06.547Z'
 excerpt: 배열을 In-place로 k만큼 밀어내는 rotate()함수에 대한 분석입니다.
 categories: 
+    - C/C++
     - LeetCode
-    - std container
 tag:
-    - c++
+    - C/C++
     - std container
     - Algorithm
+mathjax: true
 ---
 # 요약
 > 발단 : rotate()를 구현하는 문제를 풀어봄. 문제를 풀며 궁금했던 점들을 알아보았음.
