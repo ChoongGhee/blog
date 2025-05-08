@@ -131,5 +131,5 @@ public:
 
 # 각주
 [^1]: 상향식 접근 : 문제를 해결할때 가장 작은 부분부터 해결하는 형태 예시) 피보나치 수열을 반복문으로 구현한 것[하향식 접근 & 상향식 접근 (Top-Down & Bottom-Up)](/ko/하향식-접근-&-상향식-접근-(Top-Down-&-Bottom-Up)) 글 참조
-[^2]: [vector 자료형의 reserve() vs resize() (C++)](/ko/vector-자료형의-reserve()-vs-resize()-(C++)) 글 참조
+[^2]: [vector 자료형의 reserve() vs resize() (C++)](/ko/vector class의 reserve() vs resize() (C++)) 글 참조
 [^3]: 출처 : Claude 생성 SVG, Claude 생성 성능이 부족해, 제대로된 배치가 되지 않았습니다.

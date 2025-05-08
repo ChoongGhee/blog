@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect width="800" height="900" fill="#f8f9fa" rx="10" ry="10"/>
+  
+  <!-- 제목 -->
+  <text x="400" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold">std::vector 내부 배열 관리 구조 </text>
+  
+  <!-- 1. 초기 상태 (비어있는 벡터) -->
+  <rect x="50" y="70" width="700" height="140" fill="#ffffff" stroke="#dddddd" stroke-width="1" rx="8" ry="8"/>
+  <text x="60" y="100" font-family="Arial, sans-serif" font-size="20" font-weight="bold">1. 비어있는 vector (size=0, capacity=0)</text>
+  <rect x="100" y="120" width="20" height="40" fill="#e6f2ff" stroke="#000" stroke-width="2"/>
+  <line x1="120" y1="170" x2="120" y2="140" stroke="#3366ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="150" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Myfirst = _Mylast = _Myend</text>
+  
+  <!-- 2. push_back() 후 -->
+  <rect x="50" y="230" width="700" height="140" fill="#ffffff" stroke="#dddddd" stroke-width="1" rx="8" ry="8"/>
+  <text x="60" y="260" font-family="Arial, sans-serif" font-size="20" font-weight="bold">2. push_back() 3회 이후 (size=3, capacity=4)</text>
+  <rect x="100" y="280" width="20" height="40" fill="#e6f2ff" stroke="#000" stroke-width="2"/>
+  <rect x="120" y="280" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="130" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">A</text>
+  <rect x="140" y="280" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="150" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">B</text>
+  <rect x="160" y="280" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="170" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">C</text>
+  <rect x="180" y="280" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="190" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  
+  <line x1="120" y1="330" x2="120" y2="300" stroke="#3366ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="120" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Myfirst</text>
+  
+  <line x1="180" y1="330" x2="180" y2="300" stroke="#ff5555" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="180" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Mylast</text>
+  
+  <line x1="200" y1="330" x2="200" y2="300" stroke="#20aa20" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="200" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Myend</text>
+  
+  <!-- 3. reserve(8) 호출 후 -->
+  <rect x="50" y="390" width="700" height="140" fill="#ffffff" stroke="#dddddd" stroke-width="1" rx="8" ry="8"/>
+  <text x="60" y="420" font-family="Arial, sans-serif" font-size="20" font-weight="bold">3. reserve(8) 호출 후 (size=3, capacity=8)</text>
+  <rect x="100" y="440" width="20" height="40" fill="#e6f2ff" stroke="#000" stroke-width="2"/>
+  <rect x="120" y="440" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="130" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">A</text>
+  <rect x="140" y="440" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="150" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">B</text>
+  <rect x="160" y="440" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="170" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">C</text>
+  <rect x="180" y="440" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="190" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  <rect x="200" y="440" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="210" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  <rect x="220" y="440" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="230" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  <rect x="240" y="440" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="250" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  <rect x="260" y="440" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="270" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  
+  <line x1="120" y1="490" x2="120" y2="460" stroke="#3366ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="120" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Myfirst</text>
+  
+  <line x1="180" y1="490" x2="180" y2="460" stroke="#ff5555" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="180" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Mylast</text>
+  
+  <line x1="280" y1="490" x2="280" y2="460" stroke="#20aa20" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="280" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Myend</text>
+  
+  <!-- 4. resize(5) 호출 후 -->
+  <rect x="50" y="550" width="700" height="140" fill="#ffffff" stroke="#dddddd" stroke-width="1" rx="8" ry="8"/>
+  <text x="60" y="580" font-family="Arial, sans-serif" font-size="20" font-weight="bold">4. resize(5) 호출 후 (size=5, capacity=8)</text>
+  <rect x="100" y="600" width="20" height="40" fill="#e6f2ff" stroke="#000" stroke-width="2"/>
+  <rect x="120" y="600" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="130" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">A</text>
+  <rect x="140" y="600" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="150" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">B</text>
+  <rect x="160" y="600" width="20" height="40" fill="#b3d9ff" stroke="#000" stroke-width="2"/>
+  <text x="170" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">C</text>
+  <rect x="180" y="600" width="20" height="40" fill="#d9f2d9" stroke="#000" stroke-width="2"/>
+  <text x="190" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">0</text>
+  <rect x="200" y="600" width="20" height="40" fill="#d9f2d9" stroke="#000" stroke-width="2"/>
+  <text x="210" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">0</text>
+  <rect x="220" y="600" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="230" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  <rect x="240" y="600" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="250" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  <rect x="260" y="600" width="20" height="40" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="270" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#999">?</text>
+  
+  <line x1="120" y1="650" x2="120" y2="620" stroke="#3366ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="120" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Myfirst</text>
+  
+  <line x1="220" y1="650" x2="220" y2="620" stroke="#ff5555" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="220" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Mylast</text>
+  
+  <line x1="280" y1="650" x2="280" y2="620" stroke="#20aa20" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="280" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="14">_Myend</text>
+  
+  <!-- 5. 주요 개념 설명 -->
+  <rect x="50" y="710" width="700" height="170" fill="#ffffff" stroke="#dddddd" stroke-width="1" rx="8" ry="8"/>
+  <text x="400" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold">주요 개념</text>
+  
+  <rect x="100" y="760" width="160" height="30" fill="#b3d9ff" stroke="#000" stroke-width="2" rx="5" ry="5"/>
+  <text x="180" y="782" text-anchor="middle" font-family="Arial, sans-serif" font-size="16">사용 중인 원소</text>
+  
+  <rect x="270" y="760" width="160" height="30" fill="#d9f2d9" stroke="#000" stroke-width="2" rx="5" ry="5"/>
+  <text x="350" y="782" text-anchor="middle" font-family="Arial, sans-serif" font-size="16">resize로 추가된 원소</text>
+  
+  <rect x="440" y="760" width="160" height="30" fill="#f2f2f2" stroke="#000" stroke-width="2" stroke-dasharray="5,5" rx="5" ry="5"/>
+  <text x="520" y="782" text-anchor="middle" font-family="Arial, sans-serif" font-size="16">예약된 메모리 공간</text>
+  
+  <!-- size와 capacity 설명 -->
+  <text x="80" y="820" font-family="Arial, sans-serif" font-size="16" fill="#ff5555" font-weight="bold">size() = _Mylast - _Myfirst</text>
+  <text x="80" y="850" font-family="Arial, sans-serif" font-size="16" fill="#20aa20" font-weight="bold">capacity() = _Myend - _Myfirst</text>
+  
+  <!-- reserve와 resize 설명 -->
+  <text x="350" y="820" font-family="Arial, sans-serif" font-size="16" fill="#666">reserve(): _Myend만 이동 (capacity 변경)</text>
+  <text x="350" y="850" font-family="Arial, sans-serif" font-size="16" fill="#666">resize(): _Mylast 이동 (size 변경, 필요시 capacity도 변경)</text>
+  
+  <!-- 화살표 마커 정의 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+</svg>

@@ -21,8 +21,8 @@ ___
 - [x] 1st implementation $O(N*M^2)$
 - [ ] Syntax - Member functions (methods) of vector class **underutilized**[^2]
 - [ ] Streamlining of 1st implementation - finding a more suitable solution (cause: lack of algorithmic background)
-___]
-> **It always seems to me that the *hardest* part of solving algorithmic problems is *conjuring up the right **algorithm** for the problem (situation)**
+___
+> It always seems to me that **the hardest part of solving algorithmic problems** is **conjuring up the right algorithm for the problem (situation)**
 
 there are two things that are lacking.
 i've summarized the first in a footnote [^2], and this post will **focus on the second**.
@@ -30,7 +30,7 @@ i've summarized the first in a footnote [^2], and this post will **focus on the 
 so let's go through my solution.
 # What I did
 ## Describe the problem
-> > On the surface, the problem is
+>  On the surface, the problem is
 > 1. given an array differences
 > 2. an array hidden with element values in the range **lower, upper** > 3
 > 3. also an array hidden such that **differences\[i] = hidden\[i+1] - hidden\[i]**
@@ -42,9 +42,9 @@ illustration of the problem[^3]
 ## My thoughts
 i was not aware of the [Prefix Sum](/en/Prefix-Sum) algorithm when I solved the problem.
 
-> >So I missed the essence of the problem, which is "values are accumulated," and focused on "how do I get the combinations that make up the formula?
+>So I missed the essence of the problem, which is "values are accumulated," and focused on "how do I get the combinations that make up the formula?
 >
-> >In the end, I came up with nothing, and instead of thinking about efficiency, I adopted the **brute-force implementation and optimizing the implemented code**, which resulted in a bottom-up[^1] implementation to keep generating hidden\[i+1].
+>In the end, I came up with nothing, and instead of thinking about efficiency, I adopted the **brute-force implementation and optimizing the implemented code**, which resulted in a bottom-up[^1] implementation to keep generating hidden\[i+1].
 
 ```cpp
 class Solution {
@@ -83,7 +83,7 @@ i couldn't come up with a solution, so I googled it, and the answer was to apply
 
 according to the answer, the key idea is
 > differences\[i] = hidden\[i+1] - hidden\[i] > hidden\[i+1] = differences\[i] + hidden\[i], **that is, hidden\[i] = differences\[i-1] + hidden\[i-1]**.
-> > In my case, I was trying to find hidden\[i+1] that updates the differences array, and I missed the point that it's not about that, but about finding the value of hidden\[i] in the already determined differences array, **i.e., 'hidden[i] is determined by the previous value'**.
+> In my case, I was trying to find hidden\[i+1] that updates the differences array, and I missed the point that it's not about that, but about finding the value of hidden\[i] in the already determined differences array, **i.e., 'hidden[i] is determined by the previous value'**.
 
 ## Fixed
 using these ideas, we eventually realize that **'once the initial hidden\[0] is determined, all of the hidden array is determined'**, and we can use this to work through the example
@@ -131,5 +131,5 @@ i was confused as to **why you're comparing lower, to lower-min_val**. as I wrot
 
 # Footnotes
 [^1]: bottom-up approach: solving the problem from the smallest part Example.) an implementation of the Fibonacci sequence as a loop [Top-Down & Bottom-Up Approach (Top-Down & Bottom-Up)](/en/Top-Down-&-Bottom-Up-Approach-(Top-Down-&-Bottom-Up)) see article
-[^2]: [reserve() vs resize() in vector primitives (C++)](/en/reserve()-vs-resize()-in-vector-primitives-(C++)) see article
+[^2]: [reserve() vs resize() in vector primitives (C++)](/en/reserve-vs-resize-in-vector-class-c) see article
 [^3]: Source: Claude-generated SVG, Claude-generated SVG, not well placed due to lack of performance.
