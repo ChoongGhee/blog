@@ -15,7 +15,7 @@
     "axios": "^1.15.0",
     "dotenv": "^16.4.7",
     "gray-matter": "^4.0.3",
-    "hexo": "^8.1.1",
+    "hexo": "^8.1.2",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
